@@ -61,16 +61,8 @@ def get_host_vuln_data():
     })
     return host_vulns
 
-# Function to get all issues in a project
-def get_all_open_issues(project_key):
-    jql_str = f'project={project_key} AND status NOT in ("Done", "Closed")'
-    #jql_str = f'project={project_key} AND status in (Open, "In Progress")'
-    issues = jira.search_issues(jql_str, maxResults=1000)  # Adjust maxResults as needed
-    return issues
-
 # Function to get all non-closed/done issues in a project with pagination
 def get_all_issues_pagination(project_key):
-    #jql_str = f'project={project_key}'
     jql_str = f'project={project_key} AND status NOT in ("Done", "Closed")'
     start_at = 0
     max_results = 100
